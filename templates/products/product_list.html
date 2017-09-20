@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block tittle %}Hello World{% endblock %}
+
+{% block content %}
+<h1>Hola</h1>
+{% if user.is_authenticated %}
+<h3>{{user.username}} | <a href= "{% url "products:logout" %}" >Log out</a></h3>
+{% else %}
+<a href="{% url "products:authentication" %}">Login</a>
+{% endif %}
+<a href="{% url "products:new_product" %}">New Product</a>
+<ul class="lista">
+  {% for pr in object_list %}
+    <li>
+      {# <a href="{% url 'products.views.product_detail' pk=pr.pk %}">#}
+      <a href="{% url "products:detail" pr.id %}">{{ pr.name }}</a>
+      <p>{{pr.category}}</p>
+        <img src="{% if pr.image %}{{pr.image.url}}{% endif %}" alt="img del producto:{{pr.name}}">
+        {# <img src="{{pr.image.url}}" alt="img del producto:{{pr.name}}">#}
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}

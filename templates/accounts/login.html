@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block tittle %}Login{% endblock %}
+
+{% block content %}
+<div class="">
+  <h2>login</h2>
+  {% if authenticate_invalid %}
+  <p>{{error_message}}</p>
+  {% endif %}
+  <form class="" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="login"><br>
+    <input type="text" name="username" value="" placeholder="Username" required><br>
+    <input type="password" name="password" value="" placeholder="Password" required><br>
+    <button type="submit" name="button">Log in</button>
+  </form>
+</div>
+<div class="">
+  <h2>Signup</h2>
+  {% if password_invalid or signup_invalid %}
+  <p>{{error_message}}</p>
+  {% endif %}
+  <form class="" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="signup"><br>
+    <input type="text" name="username" value="" placeholder="Username" required><br>
+    <input type="password" name="password" value="" placeholder="Password" required><br>
+    <input type="password" name="repeat_password" value="" placeholder="Repeat Password" required><br>
+    <input type="text" name="first_name" value="" placeholder="First name" required><br>
+    <input type="text" name="last_name" value="" placeholder="last_name" required><br>
+    <input type="email" name="email" value="" placeholder="Email"><br>
+    <button type="submit" name="button">Sign Up</button>
+  </form>
+</div>
+{% endblock %}

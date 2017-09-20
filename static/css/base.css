@@ -1,0 +1,21 @@
+body{
+  font-family: Arial;
+}
+h1{
+  color: rgb(255, 0, 0);
+}
+img{
+  width: 200px;
+  height: 200px;
+}
+.lista{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0;
+}
+.lista li{
+  border: 2px solid #000;
+  background: #099f61;
+  list-style: none;
+}
